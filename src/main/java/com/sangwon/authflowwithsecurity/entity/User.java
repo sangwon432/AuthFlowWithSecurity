@@ -1,22 +1,27 @@
 package com.sangwon.authflowwithsecurity.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.UUID;
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name= "users")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 5514526011795248312L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(AccessLevel.NONE)
     @Column(name = "id", unique = true, nullable = false)
     private UUID id;
 
@@ -32,13 +37,21 @@ public class User implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private UserStatus userStatus;
+
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
     @PrePersist
     void onCreate() {
         this.id = UUID.randomUUID();
-        this.createdAt = LocalDateTime.now(ZoneId.of("-08:00"));
+        this.userStatus = UserStatus.PENDING_APPROVAL;
+        this.createdAt = LocalDateTime.now(ZoneOffset.UTC);
     }
 
 }

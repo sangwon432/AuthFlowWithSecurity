@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "api/user")
-@Tag(name = "User Management" , description = "Endpoints for managing user details"
+@Tag(name = "User Management" , description = "Endpoints for managing user details")
 public class UserController {
     private final UserService userService;
 
