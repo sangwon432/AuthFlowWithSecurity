@@ -1,0 +1,8 @@
+services:
+  boot_postgres:
+    container_name: boot_postgres
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - docker.env
