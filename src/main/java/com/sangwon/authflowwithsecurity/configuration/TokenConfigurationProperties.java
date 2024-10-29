@@ -12,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 @Getter
 @Setter
 @Validated
-@ConfigurationProperties(prefix = "package com.sangwon.authflowwithsecurity.token")
+@ConfigurationProperties(prefix = "com.sangwon.authflowwithsecurity.token")
 public class TokenConfigurationProperties {
 
     @Valid

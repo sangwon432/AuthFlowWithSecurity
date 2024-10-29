@@ -6,3 +6,10 @@ services:
       - "5432:5432"
     env_file:
       - docker.env
+
+  redis-cache:
+    image: redis
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass "Password@123"

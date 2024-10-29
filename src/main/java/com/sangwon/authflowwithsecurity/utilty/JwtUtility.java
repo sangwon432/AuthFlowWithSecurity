@@ -38,7 +38,8 @@ public class JwtUtility {
 
     public JwtUtility(
             final TokenConfigurationProperties tokenConfigurationProperties,
-            @Value("${spring.aplication.name}") final String issuer
+//            @Value("${spring.aplication.name}") final String issuer
+            @Value("com.sangwon.authflowwithsecurity") final String issuer
     ) {
         this.tokenConfigurationProperties = tokenConfigurationProperties;
         this.issuer = issuer;
